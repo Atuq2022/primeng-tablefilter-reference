@@ -1,0 +1,43 @@
+<h3>Consequence Map</h3>
+<p-table [value]="sections" rowGroupMode="rowspan" groupRowsBy="region.name" sortField="region.name" sortMode="single">
+	<ng-template pTemplate="header">
+		<tr>
+			<th>Region</th>
+			<th>Section</th>
+			<th [attr.colspan]="consequences.length">Consequence factor</th>
+		</tr>
+		<tr>
+			<th>
+			<p-columnFilter field="region" matchMode="in" [showMenu]="false">
+				<ng-template pTemplate="filter" let-value let-filter="filterCallback">
+					<p-multiSelect [ngModel]="value" [options]="regions" placeholder="Select a Region" (onChange)="filter($event.value)" optionLabel="name">
+						<ng-template let-option pTemplate="item">
+							<div class="p-multiselect-region-option">
+							<span class="p-ml-1">{{ option.name }}</span>
+							</div>
+						</ng-template>
+					</p-multiSelect>
+				</ng-template>
+			</p-columnFilter></th>
+			<th></th>
+			<th *ngFor="let item of consequences; index as i">{{i + 1}}</th>
+		</tr>
+	</ng-template>
+	<ng-template pTemplate="body" let-section let-rowIndex="selectedRegion" let-rowgroup="rowgroup" let-rowspan="rowspan">
+		<tr>
+			<td *ngIf="rowgroup" [attr.rowspan]="rowspan"><span class="p-text-bold p-ml-2">{{ section.region.name }}</span></td>
+			<td>{{ section.name }}</td>
+			<td *ngFor="let item of consequences">
+				<!--p-radioButton name="{{section.id}}" [value]="item + section.id * consequences.length" [(ngModel)]="selectedConsequence" (onClick)="onClick($event)"></p-radioButton><label>{{ item + section.id * consequences.length }}</label>-->
+				<input type="radio" name="{{section.id}}" value="item + section.id * consequences.length" (click)="getSectionConseq(section.id, item)">
+			</td>
+		</tr>
+	</ng-template>
+	<ng-template pTemplate="footer">
+		<span class="p-buttonset">
+			<button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-success p-button-text" (click)="saveConsequence()"></button>
+			<button pButton pRipple type="button" icon="pi pi-refresh" class="p-button-rounded p-button-warning p-button-text" (click)="loadConsequence()"></button>
+			<button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text" (click)="clearConsequence()"></button>
+		</span>
+	</ng-template>
+</p-table>

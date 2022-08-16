@@ -1,0 +1,60 @@
+{
+  "data":[
+     {
+        "id":0,
+        "name":"Section A",
+        "region":{
+           "name":"Region I",
+           "image":"regionI.png"
+        }
+     },
+     {
+        "id":1,
+        "name":"Section B",
+        "region":{
+           "name":"Region I",
+           "image":"regionI.png"
+        }
+     },
+     {
+        "id":2,
+        "name":"Section C",
+        "region":{
+           "name":"Region III",
+           "image":"regionIII.png"
+        }
+     },
+     {
+        "id":3,
+        "name":"Section D",
+        "region":{
+           "name":"Region I",
+           "image":"regionI.png"
+        }
+     },
+     {
+        "id":4,
+        "name":"Section E",
+        "region":{
+           "name":"Region II",
+           "image":"regionII.png"
+        }
+     },
+     {
+        "id":5,
+        "name":"Section F",
+        "region":{
+           "name":"Region II",
+            "image":"regionII.png"
+        }
+     },
+     {
+      "id":6,
+      "name":"Section G",
+      "region":{
+         "name":"Region I",
+         "image":"regionI.png"
+         }
+      }
+  ]
+}
